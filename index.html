@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Training 2026</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+
+  <header>
+    <strong class="brand">
+      <span aria-hidden="true">🎓</span>
+      Training 2026
+    </strong>
+
+    <nav class="actions" aria-label="Page actions">
+      <button id="direction" type="button">◎ العربية</button>
+      <button id="add" type="button">＋ Add Content</button>
+      <button id="clear" type="button">▤ Clear Content</button>
+    </nav>
+
+    <ol id="updates" aria-live="polite"></ol>
+  </header>
+
+  <div class="shell">
+
+    <aside class="sidebar" aria-label="Navigation">
+      <nav id="menu" aria-label="Sections"></nav>
+    </aside>
+
+    <span
+      id="grip"
+      class="grip"
+      tabindex="0"
+      role="separator"
+      aria-label="Resize sidebar"
+      aria-orientation="vertical"
+      aria-valuemin="125"
+      aria-valuemax="390"
+      aria-valuenow="205">
+    </span>
+
+    <main>
+
+      <section class="hero" aria-label="Animations and anatomical heart">
+
+        <section class="motion" aria-label="Moving CSS squares">
+          <h1>CSS Animation</h1>
+        </section>
+
+        <section class="heart" aria-label="Interactive anatomical heart">
+
+          <img
+            src="heart-fallback.webp"
+            alt="Anatomical human heart preview"
+            class="fallback">
+
+          <canvas
+            id="heartCanvas"
+            aria-label="3D heart: drag to rotate, wheel to zoom, right-drag to move">
+          </canvas>
+
+          
+
+        </section>
+
+      </section>
+
+      <article id="content" tabindex="0" aria-label="Learning content">
+
+        <h2>HTML, CSS &amp; JavaScript</h2>
+
+        <p>
+          Every webpage combines three technologies. Each has its own job,
+          and together they build the websites we use.
+        </p>
+
+        <section id="htmlTopic">
+          <h3>HTML</h3>
+          <p>
+            <b class="badge html">HTML</b>
+            HTML (HyperText Markup Language) creates a page's structure:
+            headings, text, images, links and forms. The browser turns
+            it into a DOM tree that CSS and JavaScript can use.
+          </p>
+        </section>
+
+        <section id="cssTopic">
+          <h3>CSS</h3>
+          <p>
+            <b class="badge css">CSS</b>
+            CSS (Cascading Style Sheets) controls appearance: colors,
+            fonts, spacing and layouts. Grid and Flexbox make responsive
+            sections, while keyframes move the transparent squares above.
+          </p>
+        </section>
+
+        <section id="jsTopic">
+          <h3>JavaScript</h3>
+          <p>
+            <b class="badge js">JS</b>
+            JavaScript adds behavior: it responds to clicks, creates
+            or removes updates, resizes the sidebar, mirrors the layout
+            and controls the interactive heart.
+          </p>
+        </section>
+
+        <section>
+          <h3>How they work together</h3>
+          <p>
+            HTML defines an element; CSS styles it; JavaScript changes it.
+            For example, clicking Add Content creates a new HTML item,
+            CSS animates its appearance, and the layout adjusts automatically.
+          </p>
+        </section>
+
+      </article>
+
+      <footer>
+        © 2026 Training 2026. All rights reserved.
+      </footer>
+
+      <button
+        class="fab"
+        id="fab"
+        type="button"
+        aria-label="Add content"
+        title="Add content">+</button>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

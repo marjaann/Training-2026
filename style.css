@@ -1,0 +1,466 @@
+
+:root {
+    --red: #990000;
+    --side: 205px;
+    --hero: 260px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    height: 100%;
+  }
+  
+  body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    color: #151515;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button:focus-visible,
+  a:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #ebae30;
+    outline-offset: 2px;
+  }
+  
+  /* HEADER */
+  
+  header {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 60px;
+    padding: 10px 13px;
+    background: var(--red);
+    color: white;
+    box-shadow: 0 3px 10px #0005;
+    z-index: 2;
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+    font-size: 17px;
+  }
+  
+  .brand span {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-radius: 6px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .actions button {
+    border: 0;
+    border-radius: 4px;
+    background: none;
+    color: white;
+    padding: 8px;
+    font: 11px Arial, sans-serif;
+    white-space: nowrap;
+  }
+  
+  .actions button:hover {
+    background: #ffffff28;
+  }
+  
+  /* DYNAMIC CONTENT */
+  
+  #updates {
+    flex-basis: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    scrollbar-width: thin;
+  }
+  
+  #updates:empty {
+    display: none;
+  }
+  
+  #updates li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 4px 0;
+    font: 12px Arial, sans-serif;
+    animation: appear .25s ease;
+  }
+  
+  #updates button {
+    border: 0;
+    background: none;
+    color: white;
+    font-size: 17px;
+    line-height: 1;
+  }
+  
+  #updates button:hover {
+    color: #ffc7c7;
+  }
+  
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  /* MAIN LAYOUT */
+  
+  .shell {
+    direction: ltr;
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: var(--side) 8px minmax(0, 1fr);
+  }
+  
+  .sidebar {
+    min-width: 0;
+    background: #f1f1f1;
+    overflow: auto;
+    scrollbar-width: thin;
+  }
+  
+  #menu {
+    padding: 6px;
+  }
+  
+  #menu a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 27px;
+    padding: 5px;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 4px;
+    font: 11px Arial, sans-serif;
+  }
+  
+  #menu a:hover,
+  #menu a.active {
+    background: #e5e0e0;
+    color: #830000;
+  }
+  
+  #menu b {
+    color: var(--icon);
+    font-size: 15px;
+    min-width: 17px;
+    text-align: center;
+  }
+  
+  /* RESIZE HANDLE */
+  
+  .grip {
+    background: #d3d3d3;
+    border-inline: 1px solid #bbb;
+    cursor: col-resize;
+    touch-action: none;
+  }
+  
+  .grip:hover,
+  .grip.dragging {
+    background: #b55;
+  }
+  
+  main {
+    position: relative;
+    display: grid;
+    grid-template-rows: var(--hero) minmax(0, 1fr) 28px;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  /* TWO FIXED PANELS */
+  
+  .hero {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: 0;
+  }
+  
+  /* CSS ANIMATION */
+  
+  .motion {
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    container-type: inline-size;
+    background: linear-gradient(140deg, #b30000, #850000);
+  }
+  
+  .motion h1 {
+    z-index: 1;
+    color: white;
+    font-size: 19px;
+    text-shadow: 0 2px 3px #5008;
+  }
+  
+  .motion i {
+    position: absolute;
+    top: var(--y);
+    left: calc(-1 * var(--s));
+    width: var(--s);
+    height: var(--s);
+    border-radius: 19%;
+    background: #ffffff2c;
+    pointer-events: none;
+    animation: fly var(--t) linear var(--d) infinite;
+  }
+  
+  .motion i.outline {
+    background: transparent;
+    border: 3px solid #ffffff45;
+    border-radius: 25%;
+  }
+  
+  /* LEFT TO RIGHT MOVEMENT */
+  
+  @keyframes fly {
+    from {
+      transform: translateX(0) rotate(-7deg);
+    }
+  
+    to {
+      transform: translateX(calc(100cqw + var(--s))) rotate(10deg);
+    }
+  }
+  
+  /* 3D HEART */
+  
+  .heart {
+    position: relative;
+    overflow: hidden;
+    background: #f6f6f7;
+  }
+  
+  .fallback {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: 86%;
+    max-width: 90%;
+    object-fit: contain;
+  }
+  
+  .heart.ready .fallback {
+    display: none;
+  }
+  
+  #heartCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: none;
+    cursor: grab;
+  }
+  
+  #heartCanvas:active {
+    cursor: grabbing;
+  }
+  
+  .heart.no3d canvas {
+    display: none;
+  }
+  
+  /* SCROLLABLE CONTENT */
+  
+  #content {
+    overflow-y: auto;
+    min-height: 0;
+    padding: 13px 15px 26px;
+    font: 12px/1.55 Georgia, serif;
+    overscroll-behavior: contain;
+  }
+  
+  #content h2 {
+    font-size: 19px;
+    margin: 0 0 10px;
+  }
+  
+  #content h3 {
+    font-size: 15px;
+    margin: 13px 0 8px;
+  }
+  
+  #content p {
+    margin: 7px 0 13px;
+  }
+  
+  #content section p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+  }
+  
+  .badge {
+    flex: 0 0 51px;
+    height: 51px;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    color: white;
+    font: 700 15px Arial, sans-serif;
+  }
+  
+  .html {
+    background: #e9502f;
+  }
+  
+  .css {
+    background: #2b4ee4;
+  }
+  
+  .js {
+    background: #e9c221;
+    color: #292100;
+  }
+  
+  /* FOOTER */
+  
+  footer {
+    display: grid;
+    place-items: center;
+    border-top: 1px solid #ddd;
+    color: #777;
+    background: #fff;
+    font-size: 10px;
+  }
+  
+  /* FLOATING ADD BUTTON */
+  
+  .fab {
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+    z-index: 3;
+  
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+  
+    background: var(--red);
+    color: white;
+    font: 28px Arial, sans-serif;
+  
+    cursor: pointer;
+    box-shadow: 0 3px 10px #0005;
+  
+    transition: transform 0.25s, background 0.25s;
+  }
+  
+  .fab:hover {
+    background: #700000;
+    transform: translateY(-6px) scale(1.1);
+  }
+  
+  /* RTL LAYOUT */
+  
+  html[dir=rtl] .shell,
+  html[dir=rtl] .hero {
+    direction: rtl;
+  }
+  
+  html[dir=rtl] #content {
+    text-align: right;
+    direction: ltr;
+  }
+  
+  html[dir=rtl] #content section p {
+    flex-direction: row-reverse;
+  }
+  
+  html[dir=rtl] #updates {
+    direction: rtl;
+  }
+  
+  html[dir=rtl] #updates li span {
+    direction: ltr;
+  }
+  
+  /* RESPONSIVE */
+  
+  @media (max-width: 760px) {
+    :root {
+      --hero: 210px;
+    }
+  
+    header {
+      padding: 8px;
+    }
+  
+    .brand {
+      font-size: 13px;
+    }
+  
+    .actions {
+      gap: 1px;
+    }
+  
+    .actions button {
+      padding: 6px 3px;
+      font-size: 10px;
+    }
+  
+    .motion h1 {
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-height: 500px) {
+    :root {
+      --hero: 165px;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .motion i {
+      animation: none;
+    }
+  
+    .fab {
+      transition: none;
+    }
+  }
+  
